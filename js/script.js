@@ -1,4 +1,3 @@
-
 const smoothies = document.querySelectorAll(".smoothie");
 //store smoothie names
 const smoothieNames = [];
@@ -117,7 +116,7 @@ class Smoothie {
 //Add to cart function:
 //check whether items already exsited in cart, if it is then add numbers
 //check whether the number of products >0
-//display table to show the details of shooping cart items 
+//display table to show the details of shooping cart items
 //display reset button
 function addToCart(cartBtn) {
   let index = Array.from(cartBtns).indexOf(cartBtn);
@@ -145,11 +144,12 @@ function addToCart(cartBtn) {
     );
 
     if (existingSmoothie) {
+      let singlePrice = existingSmoothie.price / existingSmoothie.quantity;
+
       existingSmoothie.quantity =
         parseInt(existingSmoothie.quantity) + quantity;
-      existingSmoothie.price =
-        existingSmoothie.price * existingSmoothie.quantity;
-      console.log("existing smoothie: " + existingSmoothie);
+      existingSmoothie.price = singlePrice * existingSmoothie.quantity;
+      console.log("single price : " + singlePrice);
     } else {
       let smoothie = new Smoothie(
         smoothieName,
@@ -179,6 +179,7 @@ cartBtns.forEach((btn) => {
   });
 });
 
+//bug need to be fixed
 //displat items in the shopping cart function
 function displayItemsInCart() {
   let table = document.querySelector("table");
@@ -214,7 +215,7 @@ function displayItemsInCart() {
     const row = document.createElement("tr");
     keys.forEach((key) => {
       const cell = document.createElement("td");
-      //calculate the single price 
+      //calculate the single price
       if (key == "single price") {
         cell.textContent =
           parseFloat(smoothie["price"]) / parseInt(smoothie["quantity"]);
@@ -224,7 +225,6 @@ function displayItemsInCart() {
         cell.textContent = smoothie[key] == true ? "Yes" : "No";
         row.appendChild(cell);
       } else {
-      
         cell.textContent = smoothie[key];
         row.appendChild(cell);
       }
