@@ -1,0 +1,112 @@
+
+  @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@1,500&family=Merriweather:ital,wght@0,400;0,700;1,700&family=Montserrat:ital,wght@0,100;0,200;0,400;0,500;0,700;1,300&family=Nunito&display=swap');
+
+  h1 {
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+
+
+.menu {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    justify-content: center;
+    align-content: center;
+    align-items: start;
+    justify-items: center;
+    margin: 0 5%;
+    row-gap: 2em;
+    column-gap: 2em;
+}
+
+button {
+    display: block;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.price-calc {
+    display: flex;
+    flex-wrap: wrap;
+  
+}
+
+.order-dec {
+    background-color: green;
+}
+
+.order-add {
+    background-color: yellow;
+}
+.price-calc div {
+    display: inline-block;
+    flex-grow: 1;
+}
+
+.smoothie {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+    position: relative;
+    text-align: left;
+    background-size: contain;
+    background-position: right;
+    background-repeat: no-repeat;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+.smoothie h2 {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+
+.smoothie p{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    display: inline-block;
+    width: 100%;
+}
+
+
+
+
+.price-calc {
+    width: 20%;
+    text-align: center;
+}
+
+.checkout {
+    margin: 20px auto;}
+
+.checkout button {
+    margin: 0 auto;
+}
+
+button[name = "resetBtn"] {
+    margin: 0 auto;
+}
+
+table {
+    text-align: center;
+    margin: 0 auto;
+}
+
+header {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+tbody{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.thankYouMes{
+    text-align: center;
+    color: red;
+    font-size: 1.5em;
+    font-weight: 500;
+    
+}
