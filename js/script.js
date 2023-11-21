@@ -13,7 +13,7 @@ smoothies.forEach(function (smoothie) {
     smoothieNames.push(smoothieTitle);
   }
   count++;
-  smoothie.style.backgroundImage = `url('../imgs/smoothie-svgrepo-com (${count}).svg')`;
+  smoothie.style.backgroundImage = "url('../imgs/smoothie-svgrepo-com (${count}).svg')";
 });
 
 //radio buttons for lactose free and iced
@@ -213,8 +213,8 @@ function displayItemsInCart() {
       const cell = document.createElement("td");
       //calculate the single price
       if (key === "single price") {
-        cell.textContent =
-          parseFloat(smoothie["price"]) / parseInt(smoothie["quantity"]);
+        cell.textContent = "" + smoothie["price"] / smoothie["quantity"];
+
         row.appendChild(cell);
         //display yes or no
       } else if (key === "isIce" || key === "isLactoseFree") {
