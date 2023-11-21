@@ -9,8 +9,8 @@ let count = 0;
 smoothies.forEach(function (smoothie) {
   let titleElement = smoothie.querySelector("h2");
   if (titleElement) {
-    let smoothieTtile = titleElement.textContent;
-    smoothieNames.push(smoothieTtile);
+    let smoothieTitle = titleElement.textContent;
+    smoothieNames.push(smoothieTitle);
   }
   count++;
   smoothie.style.backgroundImage = `url('../imgs/smoothie-svgrepo-com (${count}).svg')`;
@@ -19,21 +19,21 @@ smoothies.forEach(function (smoothie) {
 //radio buttons for lactose free and iced
 const radioButtons = document.querySelectorAll("input[type='radio']");
 const lactoseFreeRadios = document.querySelectorAll(
-  "input[type='radio'][value='lactose free'"
+  "input[type='radio'][value='lactose free']"
 );
 const icedRadios = document.querySelectorAll(
   "input[type='radio'][value='iced']"
 );
 
-// assign each radio an unique name
+// assign each radio a unique name
 radioButtons.forEach(function (radio) {
   let index;
-  if (radio.value == "lactose free") {
+  if (radio.value === "lactose free") {
     index = Array.from(lactoseFreeRadios).indexOf(radio);
 
     let newName = radio.getAttribute("name") + index;
     radio.setAttribute("name", newName);
-  } else if (radio.value == "iced") {
+  } else if (radio.value === "iced") {
     index = Array.from(icedRadios).indexOf(radio);
     let newName = radio.getAttribute("name") + index;
     radio.setAttribute("name", newName);
@@ -54,7 +54,7 @@ radioButtons.forEach(function (radio) {
   });
 });
 
-//enable - + buttons to add substract the number of products
+//enable - + buttons to add subtract the number of products
 smoothies.forEach((menuItem) => {
   menuItem.querySelector(".order-total").textContent = 0;
   menuItem.addEventListener("click", (event) => {
@@ -79,10 +79,10 @@ function changeNumber(menuItem, method) {
     menuItem.querySelector(".price").textContent.replace("$", "")
   );
 
-  if (method == "dec" && quantity > 0) {
+  if (method === "dec" && quantity > 0) {
     quantity--;
     menuItem.querySelector(".order-total").textContent = quantity;
-  } else if (method == "add") {
+  } else if (method === "add") {
     quantity++;
     menuItem.querySelector(".order-total").textContent = quantity;
   }
@@ -105,7 +105,7 @@ class Smoothie {
     this.isIce = isIce;
     this.isLactoseFree = isLactoseFree;
   }
-  // didnt use it
+  // didn't use it
   describe() {
     return `you ordered ${this.quantity} of ${this.name}, 
     iced : ${this.isIce}, lactose free : ${this.isLactoseFree}, 
@@ -114,9 +114,9 @@ class Smoothie {
 }
 
 //Add to cart function:
-//check whether items already exsited in cart, if it is then add numbers
+//check whether items already existed in cart, if it is then add numbers
 //check whether the number of products >0
-//display table to show the details of shooping cart items
+//display table to show the details of shopping cart items
 //display reset button
 function addToCart(cartBtn) {
   let index = Array.from(cartBtns).indexOf(cartBtn);
@@ -124,23 +124,19 @@ function addToCart(cartBtn) {
   let quantity = parseInt(
     cartBtn.parentNode.querySelector(".price-calc .order-total").innerText
   );
-  let icedOrNot = cartBtn.parentNode.querySelector(".icedOrNot input").checked
-    ? true
-    : false;
-  let lactoseFreeOrNot = cartBtn.parentNode.querySelector(
-    ".lactoseFreeOrNot input"
-  ).checked
-    ? true
-    : false;
+  let icedOrNot = !!cartBtn.parentNode.querySelector(".icedOrNot input").checked;
+  let lactoseFreeOrNot = !!cartBtn.parentNode.querySelector(
+      ".lactoseFreeOrNot input"
+  ).checked;
   let price = parseFloat(
     cartBtn.parentNode.querySelector(".sum").textContent.replace("$", "")
   );
   if (quantity > 0) {
     let existingSmoothie = cartItems.find(
       (item) =>
-        item.name == smoothieName &&
-        item.isIce == icedOrNot &&
-        item.isLactoseFree == lactoseFreeOrNot
+        item.name === smoothieName &&
+        item.isIce === icedOrNot &&
+        item.isLactoseFree === lactoseFreeOrNot
     );
 
     if (existingSmoothie) {
@@ -180,7 +176,7 @@ cartBtns.forEach((btn) => {
 });
 
 //bug need to be fixed
-//displat items in the shopping cart function
+//display items in the shopping cart function
 function displayItemsInCart() {
   let table = document.querySelector("table");
   if (!table) {
@@ -216,13 +212,13 @@ function displayItemsInCart() {
     keys.forEach((key) => {
       const cell = document.createElement("td");
       //calculate the single price
-      if (key == "single price") {
+      if (key === "single price") {
         cell.textContent =
           parseFloat(smoothie["price"]) / parseInt(smoothie["quantity"]);
         row.appendChild(cell);
         //display yes or no
-      } else if (key == "isIce" || key == "isLactoseFree") {
-        cell.textContent = smoothie[key] == true ? "Yes" : "No";
+      } else if (key === "isIce" || key === "isLactoseFree") {
+        cell.textContent = smoothie[key] === true ? "Yes" : "No";
         row.appendChild(cell);
       } else {
         cell.textContent = smoothie[key];
