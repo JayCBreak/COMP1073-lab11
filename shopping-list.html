@@ -31,6 +31,40 @@
     </ul>
 
     <script>
+      // Create variables that hold references to the list, input, and button elements
+      let list = document.querySelector('ul');
+      let btnAdd = document.querySelector('div button');
+      let input = document.querySelector('#item');
+
+      btnAdd.addEventListener('click', function() {
+        // Store the current value of the input element in a variable and clear the input
+        let currentInput = input.value;
+        input.value = '';
+
+        // Create new elements and store them in variables
+        let listItem = document.createElement('li');
+        let span = document.createElement('span');
+        let btnDelete = document.createElement('button');
+
+        // Append the span and the button as children of the list item
+        listItem.appendChild(span);
+        listItem.appendChild(btnDelete);
+
+        // Set the text content of the span and the button
+        span.textContent = currentInput;
+        btnDelete.textContent = 'Delete';
+
+        // Append the list item as a child of the list
+        list.appendChild(listItem);
+
+        // Attach an event handler to the delete button
+        btnDelete.addEventListener('click', function() {
+          list.removeChild(listItem);
+        });
+
+        // Focus the input element ready for entering the next item
+        input.focus();
+      });
     </script>
   </body>
 </html>
